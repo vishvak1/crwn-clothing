@@ -38,6 +38,8 @@ const App = () => {
         );
       })}
     </div>
+
+    // .map allows you to traverse through the object and display the properties and it's values in the UI with minimal code
   );
 };
 
