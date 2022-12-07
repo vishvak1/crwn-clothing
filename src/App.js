@@ -1,5 +1,4 @@
-import CategoryItem from "./components/category-item/category-item.component";
-import "./components/category-item/scss/categories.styles.scss";
+import Directory from "./components/directory/directory.component";
 
 const App = () => {
   const categories = [
@@ -33,11 +32,7 @@ const App = () => {
   // This way we don't have to hardcode the data and also any change made to the 'categories' object will be reflected everywhere it's been referred to.
 
   return (
-    <div className="categories-container">
-      {categories.map((category) => (
-        <CategoryItem key={category.id} category={category} />
-      ))}
-    </div>
+    <Directory categories={categories} />
 
     // .map allows you to traverse through the object and display the properties and it's values in the UI with minimal code
   );

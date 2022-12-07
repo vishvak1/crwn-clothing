@@ -1,5 +1,5 @@
 import React from "react";
-import "./scss/categories.styles.scss";
+import "./scss/category-item.styles.scss";
 
 const CategoryItem = ({ category }) => {
   const { imageUrl, title } = category;
