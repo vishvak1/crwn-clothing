@@ -1,7 +1,12 @@
-import Directory from "./components/directory/directory.component";
+import Home from "./routes/home.component";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
-  return <Directory />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 };
 
 export default App;
