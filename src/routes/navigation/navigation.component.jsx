@@ -8,11 +8,13 @@ const NavigationBar = () => {
   return (
     <>
       <div className="navigation">
-        <div className="logo-container">
+        <Link className="logo-container" to="/">
           <CrwnLogo />
-        </div>
+        </Link>
         <div className="nav-links-container">
-          <Link className="nav-link">SHOP</Link>
+          <Link className="nav-link" to="/shop">
+            SHOP
+          </Link>
         </div>
       </div>
       <Outlet />
