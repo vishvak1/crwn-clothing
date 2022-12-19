@@ -18,3 +18,18 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.password-prompt {
+  text-align: center;
+  max-width: max-content;
+  background-color: lightpink;
+  padding: 10px 40px;
+  border-radius: 8px;
+  color: red;
+  font-weight: bold;
+  margin: 15px;
+}
+
+.display-none {
+  display: none;
+}
