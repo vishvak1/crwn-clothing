@@ -23,7 +23,7 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const { updateUser } = useContext(UserContext);
+  const { currentUser, updateUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -95,7 +95,13 @@ const SignUpForm = () => {
           value={confirmPassword}
           required
         />
-        <Button type="submit">Sign up</Button>
+        {currentUser ? (
+          <Button type="button" buttonType="disabled" disabled>
+            Sign up
+          </Button>
+        ) : (
+          <Button type="submit">Sign up</Button>
+        )}
       </form>
     </div>
   );

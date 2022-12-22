@@ -43,4 +43,10 @@
       border: none;
     }
   }
+
+  &.disabled {
+    background-color: lightgray;
+    color: gray;
+    border: none;
+  }
 }
