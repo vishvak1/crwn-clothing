@@ -22,5 +22,9 @@
       padding: 10px 15px;
       cursor: pointer;
     }
+
+    .nav-profile-link::before {
+      content: "Hi, ";
+    }
   }
 }
