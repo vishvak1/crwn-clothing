@@ -15,9 +15,8 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener((user) => {
-      console.log(user);
       if (user) {
-        if (!user.displayName) return;
+        if (!user.displayName) return; // if user does not have displayName value then it's a result of the sign up, which is handled separately in the firebase.util.js Hence return stops handling this user object any further.
         createUserDocumentFromAuth(user);
       }
       setCurrentUser(user);
