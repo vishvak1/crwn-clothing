@@ -3,10 +3,18 @@
   flex-direction: column;
   margin-bottom: 30px;
 
-  .title {
+  .category-preview-title {
     font-size: 28px;
     margin-bottom: 25px;
     cursor: pointer;
+    position: relative;
+
+    &::after {
+      font-size: medium;
+      font-weight: normal;
+      content: "View more \2192";
+      float: right;
+    }
   }
 
   .preview {
