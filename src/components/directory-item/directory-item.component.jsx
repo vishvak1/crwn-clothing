@@ -12,7 +12,7 @@ const DirectoryItem = ({ category }) => {
   const navigate = useNavigate();
 
   const goToCategoryHandler = (title) => {
-    navigate(`/shop/${title}`);
+    navigate(`/shop/${title.toLowerCase()}`);
   };
 
   return (
