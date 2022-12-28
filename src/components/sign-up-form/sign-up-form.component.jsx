@@ -1,12 +1,9 @@
 import { useState, useContext } from "react";
 
-import {
-  createUserDocumentFromAuth,
-  register,
-} from "../../utils/firebase/firebase.util";
+import { register } from "../../utils/firebase/firebase.util";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import { Button, BUTTON_TYPE } from "../button/button.component";
 
 import { UserContext } from "../../contexts/user.context";
 
@@ -96,7 +93,7 @@ const SignUpForm = () => {
           required
         />
         {currentUser ? (
-          <Button type="button" buttonType="disabled" disabled>
+          <Button type="button" buttonType={BUTTON_TYPE.disabled} disabled>
             Sign up
           </Button>
         ) : (

@@ -1,20 +1,26 @@
-import "./button.styles.scss";
+import {
+  DisabledButton,
+  BaseButton,
+  GoogleSignInButton,
+  InvertedButton,
+} from "./button.styles";
 
-const BUTTON_TYPE = {
+export const BUTTON_TYPE = {
+  base: "base",
   google: "google-sign-in",
   inverted: "inverted",
   disabled: "disabled",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
-  return (
-    <button
-      className={`button-container ${BUTTON_TYPE[buttonType]}`}
-      {...otherProps}
-    >
-      {children}
-    </button>
-  );
-};
+const getButton = (buttonType = BUTTON_TYPE.base) =>
+  ({
+    [BUTTON_TYPE.base]: BaseButton,
+    [BUTTON_TYPE.google]: GoogleSignInButton,
+    [BUTTON_TYPE.inverted]: InvertedButton,
+    [BUTTON_TYPE.disabled]: DisabledButton,
+  }[buttonType]);
 
-export default Button;
+export const Button = ({ children, buttonType, ...otherProps }) => {
+  const CustomButton = getButton(buttonType);
+  return <CustomButton {...otherProps}>{children}</CustomButton>;
+};
