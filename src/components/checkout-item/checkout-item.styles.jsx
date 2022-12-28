@@ -15,32 +15,32 @@ export const ImageContainer = styled.div`
   padding-right: 15px;
 `;
 
-export const CheckoutItemImage = styled.img`
+export const Image = styled.img`
   width: 100%;
   height: 100%;
 `;
 
-export const CheckoutItemName = styled.span`
+export const Name = styled.span`
   width: 23%;
 `;
 
-export const CheckoutItemPrice = styled.span`
+export const Price = styled.span`
   width: 23%;
 `;
 
-export const CheckoutItemQuantity = styled(CheckoutItemName)`
+export const Quantity = styled(Name)`
   display: flex;
 `;
 
-export const CheckoutItemArrow = styled.span`
+export const Arrow = styled.span`
   cursor: pointer;
 `;
 
-export const CheckoutItemValue = styled.span`
+export const Value = styled.span`
   margin: 0 10px;
 `;
 
-export const CheckoutItemRemoveButton = styled.div`
+export const RemoveButton = styled.div`
   padding-left: 12px;
   cursor: pointer;
 `;
