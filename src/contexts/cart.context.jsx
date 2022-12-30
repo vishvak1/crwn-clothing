@@ -1,4 +1,5 @@
 import { createContext, useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer.util";
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingItem = cartItems.find(
@@ -39,14 +40,24 @@ const INITIAL_STATE = {
   cartTotal: 0,
 };
 
+const CART_ACTION_TYPES = {
+  SET_CART_ITEMS: "SET_CART_ITEMS",
+  SET_IS_CART_OPEN: "SET_IS_CART_OPEN",
+};
+
 const CartReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case "SET_CART_ITEMS":
+    case CART_ACTION_TYPES.SET_CART_ITEMS:
       return {
         ...state,
         ...payload,
+      };
+    case CART_ACTION_TYPES.SET_IS_CART_OPEN:
+      return {
+        ...state,
+        isCartOpen: payload,
       };
     default:
       throw new Error(`undefined type of ${type} in CartReducer`);
@@ -80,14 +91,13 @@ export const CartProvider = ({ children }) => {
       0
     );
 
-    dispatch({
-      type: "SET_CART_ITEMS",
-      payload: {
+    dispatch(
+      createAction(CART_ACTION_TYPES.SET_CART_ITEMS, {
         cartCount,
         cartTotal,
         cartItems,
-      },
-    });
+      })
+    );
   };
 
   const addItemToCart = (productToAdd) => {
@@ -104,7 +114,9 @@ export const CartProvider = ({ children }) => {
 
   const value = {
     isCartOpen,
-    setIsCartOpen: () => {},
+    setIsCartOpen: (bool) => {
+      dispatch(createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, bool));
+    },
     cartItems,
     cartCount,
     addItemToCart,
