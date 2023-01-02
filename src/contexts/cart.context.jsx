@@ -34,7 +34,7 @@ const clearCartItem = (cartItems, productToRemove) => {
 };
 
 const INITIAL_STATE = {
-  isCartOpen: true,
+  isCartOpen: false,
   cartItems: [],
   cartCount: 0,
   cartTotal: 0,
