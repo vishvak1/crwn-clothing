@@ -8,7 +8,6 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 
 import { UserProvider } from "./contexts/user.context";
-import { CategoriesProvider } from "./contexts/categories.context";
 import { CartProvider } from "./contexts/cart.context";
 
 import { store } from "./store/store";
@@ -21,11 +20,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <UserProvider>
-          <CategoriesProvider>
-            <CartProvider>
-              <App />
-            </CartProvider>
-          </CategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
         </UserProvider>
       </BrowserRouter>
     </Provider>
