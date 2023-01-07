@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
+import { useDispatch } from "react-redux";
 
-import { register } from "../../utils/firebase/firebase.util";
+import { register } from "../../utils/auth/sign-up.util";
 
 import FormInput from "../form-input/form-input.component";
 import { Button, BUTTON_TYPE } from "../button/button.component";
@@ -8,6 +9,7 @@ import { Button, BUTTON_TYPE } from "../button/button.component";
 import { UserContext } from "../../contexts/user.context";
 
 import { SignUpContainer } from "../sign-up-form/sign-up-form.styles";
+import { setCurrentUser } from "../../store/user/user.action";
 
 const defaultFormFields = {
   displayName: "",
@@ -20,11 +22,13 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const { currentUser, updateUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,7 +42,9 @@ const SignUpForm = () => {
     }
 
     try {
-      await register(email, password, displayName, updateUser);
+      const user = await register(email, password, displayName);
+      dispatch(setCurrentUser(user));
+
       resetFormFields();
     } catch (error) {
       console.log(error);
