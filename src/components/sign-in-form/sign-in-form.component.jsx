@@ -1,16 +1,17 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import {
   signInWithGooglePopup,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.util";
 
-import { UserContext } from "../../contexts/user.context";
-
 import FormInput from "../form-input/form-input.component";
 import { Button, BUTTON_TYPE } from "../button/button.component";
 
 import { SignInContainer, ButtonsContainer } from "./sign-in-form.styles";
+
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 const defaultFormFields = {
   email: "",
@@ -21,7 +22,8 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const { currentUser } = useContext(UserContext);
+  // const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector(selectCurrentUser);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);

@@ -22,6 +22,7 @@ import {
 
 const NavigationBar = () => {
   const currentUser = useSelector(selectCurrentUser);
+  // When you call useSelector(selectCurrentUser), the selectCurrentUser selector function is passed the entire state from the store as its argument, so you don't need to pass it explicitly. The state is passed to the selector function by the useSelector hook internally.
 
   const { isCartOpen } = useContext(CartContext);
 
