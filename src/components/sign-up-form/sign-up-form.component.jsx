@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { register } from "../../utils/auth/sign-up.util";
