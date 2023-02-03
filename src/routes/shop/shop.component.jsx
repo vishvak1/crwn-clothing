@@ -2,23 +2,16 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.util";
-
 import CategoriesPreview from "../categories-preview/categories-preview.component";
 import Category from "../category/category.component";
 
-import { setCategories } from "../../store/categories/categories.action";
+import { fetchCategoriesAsync } from "../../store/categories/categories.action";
 
 const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getCategoryMap = async () => {
-      const categoriesArray = await getCategoriesAndDocuments();
-      dispatch(setCategories(categoriesArray));
-    };
-
-    getCategoryMap();
+    fetchCategoriesAsync(dispatch);
   }, []);
 
   return (
